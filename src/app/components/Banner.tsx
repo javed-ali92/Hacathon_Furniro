@@ -6,6 +6,7 @@ interface BannerProps {
   logo?: string;
 }
 
+
 export default function Banner({ name, logo }: BannerProps) {
   return (
     <div className="bg-[url('/shop.png')] bg-cover bg-center h-72 w-full flex flex-col justify-center items-center px-4 text-center">
@@ -30,7 +31,9 @@ export default function Banner({ name, logo }: BannerProps) {
         <p className="font-poppins font-bold ">Home</p>
         <FaChevronRight  />
         <p className="font-poppins font-light">{name}</p>
+
       </div>
+
     </div>
   );
 }
