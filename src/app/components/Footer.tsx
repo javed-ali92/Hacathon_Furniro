@@ -21,13 +21,13 @@ export default function Footer() {
             <Link href="/" className="text-base font-medium hover:underline">
               Home
             </Link>
-            <Link href="/" className="text-base font-medium hover:underline">
+            <Link href="/shop" className="text-base font-medium hover:underline">
               Shop
             </Link>
             <Link href="/" className="text-base font-medium hover:underline">
               About
             </Link>
-            <Link href="/" className="text-base font-medium hover:underline">
+            <Link href="/contact" className="text-base font-medium hover:underline">
               Contact
             </Link>
           </div>

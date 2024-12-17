@@ -20,7 +20,7 @@ export default function Home() {
           </p>
           <button
             type="button"
-            className="w-[180px] md:w-[200px] h-[50px] md:h-[60px] bg-[#B88E2F] text-white text-xs md:text-sm lg:text-base font-bold font-poppins mt-4 md:mt-6"
+            className="w-[180px] md:w-[200px] h-[50px] md:h-[60px] hover:bg-[#e2be69] bg-[#B88E2F] text-white text-xs md:text-sm lg:text-base font-bold font-poppins mt-4 md:mt-6"
           >
             Buy Now
           </button>
@@ -176,7 +176,7 @@ export default function Home() {
           <div className="flex justify-center my-8">
             <button
               type="button"
-              className=" w-[245px] h-[48px] border border-[#B88E2F] text-[#B88E2F] font-semibold text-base font-poppins items-center justify-center"
+              className=" w-[245px] h-[48px] border border-[#B88E2F] hover:bg-[#FCF8F3] text-[#B88E2F] font-semibold text-base font-poppins items-center justify-center"
             >
               Show More
             </button>
@@ -187,123 +187,121 @@ export default function Home() {
       {/* Our Product End */}
 
       {/* beautiful section start */}
-<div className="h-[670px] w-full flex bg-[#FCF8F3] lg:flex-row flex-col">
-  {/* Text Left Side */}
-  <div className="flex flex-col my-auto gap-6 pl-6 md:pl-14 w-full lg:w-1/2">
-    <div className="w-full md:w-[422px] h-auto flex flex-col gap-3">
-      <h3 className="text-[32px] md:text-[40px]/[48px] text-[#3A3A3A] font-bold font-poppins">
-        50+ Beautiful rooms inspiration
-      </h3>
-      <p className="text-sm md:text-base font-medium font-poppins text-[#616161]">
-        Our designer already made a lot of beautiful prototipe of rooms that inspire you
-      </p>
-    </div>
+      <div className="h-[670px] w-full flex bg-[#FCF8F3] lg:flex-row flex-col">
+        {/* Text Left Side */}
+        <div className="flex flex-col my-auto gap-6 pl-6 md:pl-14 w-full lg:w-1/2">
+          <div className="w-full md:w-[422px] h-auto flex flex-col gap-3">
+            <h3 className="text-[32px] md:text-[40px]/[48px] text-[#3A3A3A] font-bold font-poppins">
+              50+ Beautiful rooms inspiration
+            </h3>
+            <p className="text-sm md:text-base font-medium font-poppins text-[#616161]">
+              Our designer already made a lot of beautiful prototipe of rooms
+              that inspire you
+            </p>
+          </div>
 
-    <button
-      type="button"
-      className="w-[176px] h-[48px] bg-[#B88E2F] text-base font-poppins font-semibold flex items-center justify-center"
-    >
-      Explore More
-    </button>
-  </div>
-
-  {/* Images Section */}
-  <div className="flex gap-5 relative justify-center items-center overflow-hidden max-h-[600px] lg:justify-start w-full lg:w-1/2 mt-6 lg:mt-0">
-    {/* Main Image */}
-    <div className="relative w-full max-w-[404px]">
-      <Image
-        src={"/room-1.png"}
-        alt="bedroom image"
-        layout="responsive"
-        width={404}
-        height={582}
-      />
-      <div className="absolute left-4 md:left-6 bottom-14 md:bottom-28 flex items-end">
-        <div className="md:w-[217px] w-[150px] md:h-[130px] h-[100px] bg-white flex flex-col justify-center pl-5">
-          <p className="text-sm md:text-base font-poppins text-[#616161] font-medium">
-            01 --- Bed Room
-          </p>
-          <h5 className="font-semibold font-poppins text-lg md:text-[28px]/[33.6px] text-[#3A3A3A]">
-            Inner Peace
-          </h5>
+          <button
+            type="button"
+            className="w-[176px] h-[48px] bg-[#B88E2F] hover:bg-[#e2be69] text-white text-base font-poppins font-semibold flex items-center justify-center"
+          >
+            Explore More
+          </button>
         </div>
-        <div className="h-10 w-10 bg-[#B88E2F] flex justify-center items-center">
+
+        {/* Images Section */}
+        <div className="flex gap-5 relative justify-center items-center overflow-hidden max-h-[600px] lg:justify-start w-full lg:w-1/2 mt-6 lg:mt-0">
+          {/* Main Image */}
+          <div className="relative w-full max-w-[404px]">
+            <Image
+              src={"/room-1.png"}
+              alt="bedroom image"
+              layout="responsive"
+              width={404}
+              height={582}
+            />
+            <div className="absolute left-4 md:left-6 bottom-14 md:bottom-28 flex items-end">
+              <div className="md:w-[217px] w-[150px] md:h-[130px] h-[100px] bg-white flex flex-col justify-center pl-5">
+                <p className="text-sm md:text-base font-poppins text-[#616161] font-medium">
+                  01 --- Bed Room
+                </p>
+                <h5 className="font-semibold font-poppins text-lg md:text-[28px]/[33.6px] text-[#3A3A3A]">
+                  Inner Peace
+                </h5>
+              </div>
+              <div className="h-10 w-10 bg-[#B88E2F] flex justify-center items-center">
+                <Image
+                  src={"/right-arrow.png"}
+                  alt="arrow image"
+                  height={12}
+                  width={18}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Smaller Images */}
+          <div className="flex flex-col w-full max-w-[280px] gap-6 lg:gap-12 lg:-mt-[35px]">
+            <Image
+              src={"/room-2.png"}
+              alt="dining table image"
+              layout="intrinsic"
+              width={372}
+              height={408}
+              className="w-[300px] h-[350px] md:w-[372px] md:h-[408px] lg:w-[400px] lg:h-[500px] xl:h-[550px] max-w-full"
+            />
+
+            <Image
+              src={"/Indicator.png"}
+              alt="indicator"
+              width={120}
+              height={27}
+              className="w-[120px] h-auto "
+            />
+          </div>
+
+          {/* Small Side Image */}
+          <div className="hidden lg:block lg:-mt-[109px]">
+            <Image
+              src={"/room-3.png"}
+              alt="small image"
+              width={52}
+              height={70}
+              className="w-[82px] h-auto"
+            />
+          </div>
+
+          {/* Image Navigator */}
           <Image
-            src={"/right-arrow.png"}
-            alt="arrow image"
-            height={12}
-            width={18}
+            src={"/image-navigator.png"}
+            alt="image navigator"
+            width={48}
+            height={48}
+            className="absolute right-6 top-[60%] lg:right-12 lg:top-52"
           />
         </div>
       </div>
-    </div>
+      {/* beautiful section end */}
 
-    {/* Smaller Images */}
-    <div className="flex flex-col w-full max-w-[280px] gap-6 lg:gap-12 lg:-mt-[35px]">
-  <Image
-    src={"/room-2.png"}
-    alt="dining table image"
-    layout="intrinsic"
-    width={372}
-    height={408}
-    className="w-[300px] h-[350px] md:w-[372px] md:h-[408px] lg:w-[400px] lg:h-[500px] xl:h-[550px] max-w-full"
-  />
+      {/*FuniroFurniture start */}
+      <div className="mt-16">
+        <div className="px-4">
+          <p className="font-poppins font-semibold text-center text-[#616161] text-lg md:text-xl/[30px]">
+            Share your setup with
+          </p>
+          <h2 className="text-[#3A3A3A] font-poppins font-bold text-2xl/[32px] md:text-[40px]/[48px] text-center">
+            #FuniroFurniture
+          </h2>
+        </div>
 
-  <Image
-    src={"/Indicator.png"}
-    alt="indicator"
-    width={120}
-    height={27}
-    className="w-[120px] h-auto "
-  />
-</div>
-
-
-    {/* Small Side Image */}
-    <div className="hidden lg:block lg:-mt-[109px]">
-      <Image
-        src={"/room-3.png"}
-        alt="small image"
-        width={52}
-        height={70}
-        className="w-[82px] h-auto"
-      />
-    </div>
-
-    {/* Image Navigator */}
-    <Image
-      src={"/image-navigator.png"}
-      alt="image navigator"
-      width={48}
-      height={48}
-      className="absolute right-6 top-[60%] lg:right-12 lg:top-52"
-    />
-  </div>
-  </div>
-  {/* beautiful section end */}
-
-  {/*FuniroFurniture start */}
-  <div className="mt-16">
-  <div className="px-4">
-  <p className="font-poppins font-semibold text-center text-[#616161] text-lg md:text-xl/[30px]">
-    Share your setup with
-  </p>
-  <h2 className="text-[#3A3A3A] font-poppins font-bold text-2xl/[32px] md:text-[40px]/[48px] text-center">
-    #FuniroFurniture
-  </h2>
-</div>
-
-
-    <Image
-  src={"/Images.png"}
-  alt="h"
-  height={721}
-  width={1799}
-  className="w-full h-auto object-cover"
-/>
-  </div>
-  {/*FuniroFurniture end */}
-
+        <Image
+          src={"/Images.png"}
+          alt="h"
+          height={721}
+          width={1799}
+          className="w-full h-auto object-cover"
+        />
+      </div>
+      {/*FuniroFurniture end */}
     </div>
   );
 }

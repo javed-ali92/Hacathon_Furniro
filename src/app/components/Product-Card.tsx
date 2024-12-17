@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             alt="Product image"
             layout="fill"
             objectFit="cover"
-            className="rounded-lg"
+            className=""
           />
           {discount && (
             <div

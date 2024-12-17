@@ -3,15 +3,16 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="max-w-[1286px] h-[100px] mx-auto flex justify-between items-center relative z-10">
   {/* logo */}
-  <div className="w-[185px] h-[41px] flex items-center">
-    <Image src={"/logo.png"} alt="Website logo" height={32} width={50} className="md:w-auto w-8 h-8"/>
-    <h2 className="lg:text-[34px]/[41.45px] md:text-3xl text-2xl font-bold font-montserrat">
+  <div className="w-[185px] h-[32px] flex items-center">
+    <Image src={"/logo.png"} alt="Website logo" height={41} width={50} className="md:w-auto  w-8 h-8"/>
+    <h2 className="lg:text-[34px]/[49px] md:text-3xl text-2xl font-bold font-montserrat mt-1">
       Furniro
     </h2>
   </div>
@@ -38,18 +39,18 @@ export default function Header() {
       </Link>
     </li>
     <li>
-      <Link href="/ug" className="block p-3 md:p-0 hover:underline active:underline">
+      <Link href="/shop" className="block p-3 md:p-0 hover:underline active:underline">
+        Shop
+      </Link>
+    </li>
+    <li>
+      <Link href="/blog" className="block p-3 md:p-0 hover:underline active:underline">
+        Blog
+      </Link>
+    </li>
+    <li>
+      <Link href="/contact" className="block p-3 md:p-0 hover:underline active:underline">
         Contact
-      </Link>
-    </li>
-    <li>
-      <Link href="/ug" className="block p-3 md:p-0 hover:underline active:underline">
-        About
-      </Link>
-    </li>
-    <li>
-      <Link href="/ug" className="block p-3 md:p-0 hover:underline active:underline">
-        Sign Up
       </Link>
     </li>
   </ul>
