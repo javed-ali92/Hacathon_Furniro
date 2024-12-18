@@ -24,7 +24,7 @@ export default function Blog(){
                         <div className="h-[58px] w-[311px] border rounded-md flex items-center justify-center border-[#9F9F9F] ">
                             <label htmlFor="search" className="flex gap-4">
                                 <input type="text" className="outline-none placeholder:text-base" id="search"/>
-                                <FiSearch/>
+                                <FiSearch className="w-[5px] h-[5px]"/>
                             </label>
                         </div>
 
