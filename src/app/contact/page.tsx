@@ -1,12 +1,12 @@
 import Image from "next/image";
-import CustomerCare from "../components/Customer-Care";
-import Banner from "../components/Banner";
+import CustomerCare from "@/components/Customer-Care";
+import Banner from "@/components/Banner";
 
 export default function Contact() {
   return (
     <div className=" flex flex-col gap-20">
       {/* banner section start*/}
-      <Banner name="Contact" logo="/logo.png" />
+      <Banner name="Contact" title="Contact" logo="/logo.png" />
       {/* banner section end */}
 
       {/* Contact Section Start */}

@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showOverlay = false, // Default is false
 }) => {
   return (
-    <div className="relative w-[320px] sm:w-[285px] mx-auto">
+    <div className="relative w-[320px] sm:w-[280px] mx-auto">
       <div
         className={`flex flex-col relative group transition-opacity duration-300 ${
           showOverlay ? "opacity-50" : "opacity-100"

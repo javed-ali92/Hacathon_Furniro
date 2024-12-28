@@ -1,13 +1,14 @@
 import Image from "next/image";
-import ProductCard from "../components/Product-Card";
-import CustomerCare from "../components/Customer-Care";
-import Banner from "../components/Banner";
+import ProductCard from "@/components/Product-Card";
+import CustomerCare from "@/components/Customer-Care";
+import Banner from "@/components/Banner"; 
+import Link from "next/link";
 
 export default function Shop() {
   return (
     <div>
       {/* banner section start*/}
-      <Banner name="Shop"/>
+      <Banner name="Shop" logo="/logo.png" title="Shop"/>
       {/* banner section end */}
 
       {/* Second Section Start */}
@@ -79,172 +80,211 @@ export default function Shop() {
       {/* items start */}
 
       {/* Our Product Start */}
-      <div className="lg:w-[1236px] mx-auto px-4 py-6">
+      <div className="xl:w-[1236px] w-auto mx-auto px-4 py-6">
         <div>
           {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7">
             {/* First Row */}
-            <ProductCard
-              image="/image-1.png"
-              name="Syltherine"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              originalPrice="Rp 3.500.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-30%"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-1.png"
+                name="Syltherine"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+                originalPrice="Rp 3.500.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-30%"
+              />
+            </Link>
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-02.png"
+                name="Leviosa"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+                showOverlay={true}
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-2.png"
-              name="Leviosa"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              showOverlay={true}
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-03.png"
+                name="Lolito"
+                description="Luxury big sofa"
+                discountedPrice="Rp 7.000.000"
+                originalPrice="Rp 14.000.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-50%"
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-3.png"
-              name="Lolito"
-              description="Luxury big sofa"
-              discountedPrice="Rp 7.000.000"
-              originalPrice="Rp 14.000.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-50%"
-            />
-
-            <ProductCard
-              image="/image-4.png"
-              name="Respira"
-              description="Outdoor bar table and stool"
-              discountedPrice="Rp 500.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-4.png"
+                name="Respira"
+                description="Outdoor bar table and stool"
+                discountedPrice="Rp 500.000"
+                discountBgColor="bg-[#2EC1AC]"
+                discount="New"
+              />
+            </Link>
 
             {/* Second Row */}
-            <ProductCard
-              image="/image-1.png"
-              name="Syltherine"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              originalPrice="Rp 3.500.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-30%"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-1.png"
+                name="Syltherine"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+                originalPrice="Rp 3.500.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-30%"
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-2.png"
-              name="Leviosa"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-2.png"
+                name="Leviosa"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-3.png"
-              name="Lolito"
-              description="Luxury big sofa"
-              discountedPrice="Rp 7.000.000"
-              originalPrice="Rp 14.000.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-50%"
-            />
-
-            <ProductCard
-              image="/image-4.png"
-              name="Respira"
-              description="Outdoor bar table and stool"
-              discountedPrice="Rp 500.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-3.png"
+                name="Lolito"
+                description="Luxury big sofa"
+                discountedPrice="Rp 7.000.000"
+                originalPrice="Rp 14.000.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-50%"
+              />
+            </Link>
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-4.png"
+                name="Respira"
+                description="Outdoor bar table and stool"
+                discountedPrice="Rp 500.000"
+                discountBgColor="bg-[#2EC1AC]"
+                discount="New"
+              />
+            </Link>
 
             {/* third Row */}
-            <ProductCard
-              image="/image-1.png"
-              name="Syltherine"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              originalPrice="Rp 3.500.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-30%"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-1.png"
+                name="Syltherine"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+                originalPrice="Rp 3.500.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-30%"
+              />
+            </Link>
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-2.png"
+                name="Leviosa"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+              />
+            </Link>
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-3.png"
+                name="Lolito"
+                description="Luxury big sofa"
+                discountedPrice="Rp 7.000.000"
+                originalPrice="Rp 14.000.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-50%"
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-2.png"
-              name="Leviosa"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-            />
-
-            <ProductCard
-              image="/images-3.png"
-              name="Lolito"
-              description="Luxury big sofa"
-              discountedPrice="Rp 7.000.000"
-              originalPrice="Rp 14.000.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-50%"
-            />
-
-            <ProductCard
-              image="/image-4.png"
-              name="Respira"
-              description="Outdoor bar table and stool"
-              discountedPrice="Rp 500.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-4.png"
+                name="Respira"
+                description="Outdoor bar table and stool"
+                discountedPrice="Rp 500.000"
+                discountBgColor="bg-[#2EC1AC]"
+                discount="New"
+              />
+            </Link>
 
             {/* fourth Row */}
-            <ProductCard
-              image="/image-1.png"
-              name="Syltherine"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              originalPrice="Rp 3.500.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-30%"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-1.png"
+                name="Syltherine"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+                originalPrice="Rp 3.500.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-30%"
+              />
+            </Link>
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-2.png"
+                name="Leviosa"
+                description="Stylish cafe chair"
+                discountedPrice="Rp 2.500.000"
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-2.png"
-              name="Leviosa"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/images-3.png"
+                name="Lolito"
+                description="Luxury big sofa"
+                discountedPrice="Rp 7.000.000"
+                originalPrice="Rp 14.000.000"
+                discountBgColor="bg-[#E97171]"
+                discount="-50%"
+              />
+            </Link>
 
-            <ProductCard
-              image="/images-3.png"
-              name="Lolito"
-              description="Luxury big sofa"
-              discountedPrice="Rp 7.000.000"
-              originalPrice="Rp 14.000.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-50%"
-            />
-
-            <ProductCard
-              image="/image-4.png"
-              name="Respira"
-              description="Outdoor bar table and stool"
-              discountedPrice="Rp 500.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+            <Link href={"/singleProduct"}>
+              <ProductCard
+                image="/image-4.png"
+                name="Respira"
+                description="Outdoor bar table and stool"
+                discountedPrice="Rp 500.000"
+                discountBgColor="bg-[#2EC1AC]"
+                discount="New"
+              />
+            </Link>
           </div>
 
           {/* button start */}
           <div className="flex w-auto md:w-[392px] h-[90px] justify-center mx-auto gap-6 my-20">
-            <button type="button" className="w-[60px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]] text-white flex justify-center items-center bg-[#B88E2F]">
+            <button
+              type="button"
+              className="w-[60px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]] text-white flex justify-center items-center bg-[#B88E2F]"
+            >
               1
             </button>
-            <button type="button" className="w-[60px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]]  flex justify-center items-center bg-[#F9F1E7]">
+            <button
+              type="button"
+              className="w-[60px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]]  flex justify-center items-center bg-[#F9F1E7]"
+            >
               2
             </button>
-            <button type="button"className="w-[60px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]]  flex justify-center items-center bg-[#F9F1E7]">
+            <button
+              type="button"
+              className="w-[60px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]]  flex justify-center items-center bg-[#F9F1E7]"
+            >
               3
             </button>
-            <button type="button" className="w-[98px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]] flex justify-center items-center bg-[#F9F1E7]">
+            <button
+              type="button"
+              className="w-[98px] h-[60px] font-poppins rounded-lg font-normal text-xl/[30px]] flex justify-center items-center bg-[#F9F1E7]"
+            >
               Next
             </button>
           </div>
@@ -256,7 +296,7 @@ export default function Shop() {
       {/* items end */}
 
       {/* customer care Section Start */}
-      <CustomerCare/>
+      <CustomerCare />
       {/* customer care Section End */}
     </div>
   );
