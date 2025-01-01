@@ -73,16 +73,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {/* Overlay Section */}
       {showOverlay && (
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center gap-4 p-4 sm:p-6">
+          <Link href={"/cart"}>
           <button
             type="button"
             className="text-[#D89E00] w-full sm:w-[80%] lg:w-[202px] h-12 bg-white font-semibold text-sm sm:text-base rounded-lg"
           >
             Add to cart
           </button>
+          </Link>
 
           {/* Overlay Actions */}
           <div className="flex justify-between w-full sm:w-[80%] lg:w-[202px]">
             {/* Share */}
+            <Link href={"/Share"}>
             <div className="flex items-center gap-1 text-white cursor-pointer">
               <Image
                 src={"/share.png"}
@@ -92,8 +95,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
               />
               <p className="text-xs sm:text-sm font-medium font-poppins">Share</p>
             </div>
+            </Link>
 
             {/* Compare */}
+            <Link href={"/product-comparison"}>
             <div className="flex items-center gap-1 text-white cursor-pointer">
               <Image
                 src={"/compare.png"}
@@ -105,8 +110,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 Compare
               </p>
             </div>
+            </Link>
 
             {/* Like */}
+              <Link href={"/like"}>
             <div className="flex items-center gap-1 text-white cursor-pointer">
               <Image
                 src={"/heart-white.png"}
@@ -116,6 +123,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               />
               <p className="text-xs sm:text-sm font-medium font-poppins">Like</p>
             </div>
+            </Link>
           </div>
         </div>
       )}
