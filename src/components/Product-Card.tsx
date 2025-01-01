@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 interface ProductCardProps {
@@ -22,6 +23,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showOverlay = false, // Default is false
 }) => {
   return (
+    <Link href={"/singleProduct"}>
+
     <div className="relative w-[320px] sm:w-[280px] mx-auto">
       <div
         className={`flex flex-col relative group transition-opacity duration-300 ${
@@ -117,6 +120,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </div>
       )}
     </div>
+    </Link>
   );
 };
 

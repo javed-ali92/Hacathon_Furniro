@@ -27,7 +27,7 @@ export default function Header() {
       onClick={() => setMenueOpen(!menueOpen)}
       className="text-2xl focus:outline-none"
       >
-        {/* {menueOpen ? "X" : "☰"} */}
+        {menueOpen ? "X" : "☰"}
 
       </button>
 

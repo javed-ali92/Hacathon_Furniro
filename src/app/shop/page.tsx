@@ -85,7 +85,6 @@ export default function Shop() {
           {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7">
             {/* First Row */}
-            <Link href={"/singleProduct"}>
               <ProductCard
                 image="/image-1.png"
                 name="Syltherine"
@@ -95,20 +94,17 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-30%"
               />
-            </Link>
-            <Link href={"/singleProduct"}>
+           
               <ProductCard
-                image="/images-02.png"
+                image="/images-2.png"
                 name="Leviosa"
                 description="Stylish cafe chair"
                 discountedPrice="Rp 2.500.000"
                 showOverlay={true}
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+           
               <ProductCard
-                image="/images-03.png"
+                image="/images-3.png"
                 name="Lolito"
                 description="Luxury big sofa"
                 discountedPrice="Rp 7.000.000"
@@ -116,9 +112,7 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-50%"
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+            
               <ProductCard
                 image="/image-4.png"
                 name="Respira"
@@ -127,10 +121,8 @@ export default function Shop() {
                 discountBgColor="bg-[#2EC1AC]"
                 discount="New"
               />
-            </Link>
 
             {/* Second Row */}
-            <Link href={"/singleProduct"}>
               <ProductCard
                 image="/image-1.png"
                 name="Syltherine"
@@ -140,18 +132,14 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-30%"
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+          
               <ProductCard
                 image="/images-2.png"
                 name="Leviosa"
                 description="Stylish cafe chair"
                 discountedPrice="Rp 2.500.000"
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+            
               <ProductCard
                 image="/images-3.png"
                 name="Lolito"
@@ -161,8 +149,7 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-50%"
               />
-            </Link>
-            <Link href={"/singleProduct"}>
+           
               <ProductCard
                 image="/image-4.png"
                 name="Respira"
@@ -171,10 +158,8 @@ export default function Shop() {
                 discountBgColor="bg-[#2EC1AC]"
                 discount="New"
               />
-            </Link>
 
             {/* third Row */}
-            <Link href={"/singleProduct"}>
               <ProductCard
                 image="/image-1.png"
                 name="Syltherine"
@@ -184,16 +169,14 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-30%"
               />
-            </Link>
-            <Link href={"/singleProduct"}>
+            
               <ProductCard
                 image="/images-2.png"
                 name="Leviosa"
                 description="Stylish cafe chair"
                 discountedPrice="Rp 2.500.000"
               />
-            </Link>
-            <Link href={"/singleProduct"}>
+            
               <ProductCard
                 image="/images-3.png"
                 name="Lolito"
@@ -203,9 +186,7 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-50%"
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+            
               <ProductCard
                 image="/image-4.png"
                 name="Respira"
@@ -214,10 +195,8 @@ export default function Shop() {
                 discountBgColor="bg-[#2EC1AC]"
                 discount="New"
               />
-            </Link>
 
             {/* fourth Row */}
-            <Link href={"/singleProduct"}>
               <ProductCard
                 image="/image-1.png"
                 name="Syltherine"
@@ -227,17 +206,14 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-30%"
               />
-            </Link>
-            <Link href={"/singleProduct"}>
+          
               <ProductCard
                 image="/images-2.png"
                 name="Leviosa"
                 description="Stylish cafe chair"
                 discountedPrice="Rp 2.500.000"
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+           
               <ProductCard
                 image="/images-3.png"
                 name="Lolito"
@@ -247,9 +223,7 @@ export default function Shop() {
                 discountBgColor="bg-[#E97171]"
                 discount="-50%"
               />
-            </Link>
-
-            <Link href={"/singleProduct"}>
+            
               <ProductCard
                 image="/image-4.png"
                 name="Respira"
@@ -258,7 +232,6 @@ export default function Shop() {
                 discountBgColor="bg-[#2EC1AC]"
                 discount="New"
               />
-            </Link>
           </div>
 
           {/* button start */}
