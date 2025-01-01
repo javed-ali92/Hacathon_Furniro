@@ -76,7 +76,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Link href={"/cart"}>
           <button
             type="button"
-            className="text-[#D89E00] w-full sm:w-[80%] lg:w-[202px] h-12 bg-white font-semibold text-sm sm:text-base rounded-lg"
+            className="text-[#D89E00] w-[150px] sm:w-[80%] lg:w-[202px] h-12 bg-white font-semibold text-sm sm:text-base rounded-lg"
           >
             Add to cart
           </button>
