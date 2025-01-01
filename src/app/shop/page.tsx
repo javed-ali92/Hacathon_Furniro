@@ -2,7 +2,6 @@ import Image from "next/image";
 import ProductCard from "@/components/Product-Card";
 import CustomerCare from "@/components/Customer-Care";
 import Banner from "@/components/Banner"; 
-import Link from "next/link";
 
 export default function Shop() {
   return (
