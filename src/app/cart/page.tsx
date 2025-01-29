@@ -1,84 +1,144 @@
+"use client";
 import Banner from "@/components/Banner";
 import CustomerCare from "@/components/Customer-Care";
 import Image from "next/image";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
+import {
+  decrementQuantity,
+  getCart,
+  incrementQuantity,
+  removeFromTheCart,
+} from "../../../redux/cartSlice";
+import { urlFor } from "@/sanity/lib/image";
+import { Product } from "../../../types/product";
 
 export default function Cart() {
+  const cart = useAppSelector(getCart);
+  const dispatch = useAppDispatch();
+
+  // calculate total price
+  let totalPrice = 0;
+  cart.forEach((item: Product) => {
+    totalPrice += item.price * item.quantity;
+  });
+
   return (
     <div>
-      <Banner name="Cart" title="Cart" logo="/logo.png"/>
+      <Banner name="Cart" title="Cart" logo="/logo.png" />
 
-      <div className="h-auto lg:h-[525px] flex justify-center items-center px-4 md:px-6 lg:px-0 xl:my-0 my-5">
-        <div className="h-auto lg:h-[390px] w-full lg:w-[1240px] flex flex-col xl:flex-row justify-between gap-6">
-          {/* product */}
-          <div className="w-full lg:w-[817px] h-auto lg:h-[215px] flex flex-col justify-between">
-            <div className="h-[55px] bg-[#F9F1E7] flex items-center px-4 lg:px-40 gap-4 lg:gap-28">
-              <p className="font-poppins font-medium text-sm lg:text-base">Product</p>
-              <p className="font-poppins font-medium text-sm lg:text-base">Price</p>
-              <p className="font-poppins font-medium text-sm lg:text-base ml-3">Quantity</p>
-              <p className="font-poppins font-medium text-sm lg:text-base">Subtotal</p>
+      <div className="h-auto flex justify-center items-center px-4 md:px-6 lg:px-0 my-5">
+        <div className="w-full lg:w-[1240px] flex flex-col xl:items-start items-center xl:flex-row justify-between gap-8">
+          {/* Product Section */}
+          <div className="w-full lg:w-[65%] flex flex-col">
+            {/* Header */}
+            <div className="h-14 bg-[#F9F1E7] flex items-center px-4 lg:px-10 gap-4">
+              <p className="font-poppins font-medium text-sm lg:text-base flex-1">
+                Product
+              </p>
+              <p className="font-poppins font-medium text-sm lg:text-base flex-1 text-center">
+                Price
+              </p>
+              <p className="font-poppins font-medium text-sm lg:text-base flex-1 text-center">
+                Quantity
+              </p>
+              <p className="font-poppins font-medium text-sm lg:text-base flex-1 text-center">
+                Subtotal
+              </p>
             </div>
 
-            <div className="h-auto lg:h-[108px] flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-0 py-4 lg:py-0">
-              <Image
-                src={"/cart-product.png"}
-                alt="product image"
-                height={105}
-                width={108}
-                className="object-contain"
-              />
+            {/* Products */}
+            <div className="flex flex-col gap-6 mt-4">
+              {cart.map((val: Product, index: number) => (
+                <div
+                  key={index}
+                  className="h-auto flex flex-col sm:flex-row items-center gap-4 bg-white shadow-md p-4 rounded-lg"
+                >
+                  {/* Product Image */}
+                  <Image
+                    src={urlFor(val.productImage).url()}
+                    alt="product image"
+                    height={105}
+                    width={108}
+                    className="object-contain rounded-md"
+                  />
 
-              <div className="h-auto lg:h-[25px] flex flex-col lg:flex-row gap-4 lg:gap-20 items-center">
-                <p className="font-poppins text-sm lg:text-base font-normal text-[#9F9F9F]">
-                  Asgaard sofa
-                </p>
-                <p className="font-poppins text-sm lg:text-base font-normal text-[#9F9F9F]">
-                  Rs. 250,000.00
-                </p>
-                <p className="font-poppins text-sm lg:text-base font-normal border border-[#9F9F9F] flex items-center justify-center w-8 h-8 rounded-md">
-                  1
-                </p>
-                <p className="font-poppins text-sm lg:text-base font-normal">
-                  Rs. 250,000.00
-                </p>
-              </div>
+                  {/* Product Details */}
+                  <div className="flex-1 flex flex-col sm:flex-row gap-6 items-center lg:items-start justify-between">
+                    <p className="font-poppins text-sm lg:text-base font-medium text-gray-600">
+                      {val.title}
+                    </p>
+                    <p className="font-poppins text-sm lg:text-base font-medium text-gray-600">
+                      ${val.price}
+                    </p>
 
-              <Image
-                src={"/delete.png"}
-                alt="product image"
-                height={21.88}
-                width={21}
-                className="hover:cursor-pointer"
-              />
+                    {/* Quantity Controls */}
+                    <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-3 py-1">
+                      <button
+                        onClick={() => {
+                          if (val.quantity > 1) {
+                            dispatch(decrementQuantity(val));
+                          }
+                        }}
+                        className="text-lg font-bold"
+                      >
+                        -
+                      </button>
+                      <p className="text-base">{val.quantity}</p>
+                      <button
+                        onClick={() => {
+                          dispatch(incrementQuantity(val));
+                        }}
+                        className="text-lg font-bold"
+                      >
+                        +
+                      </button>
+                    </div>
+
+                    <p className="font-poppins text-sm lg:text-base font-medium">
+                      ${val.price * val.quantity}
+                    </p>
+                    {/* Delete Button */}
+                    <button
+                      onClick={() => {
+                        dispatch(removeFromTheCart(val._id));
+                      }}
+                    >
+                      <Image
+                        src={"/delete.png"}
+                        alt="delete product"
+                        height={22}
+                        width={22}
+                        className="hover:cursor-pointer"
+                      />
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* price */}
-          <div className="h-auto lg:h-[390px] w-full lg:w-[393px] flex flex-col items-center justify-center gap-10 bg-[#F9F1E7] p-6 lg:p-0">
-            <h3 className="font-poppins font-semibold text-2xl lg:text-[32px]/[48px]">
+          {/* Cart Totals Section */}
+          <div className="w-full lg:w-[35%] bg-[#F9F1E7] p-6 rounded-lg shadow-lg">
+            <h3 className="font-poppins font-semibold text-2xl lg:text-3xl text-center">
               Cart Totals
             </h3>
 
-            <div className="flex flex-col gap-4 lg:gap-7 mt-3">
-              <span className="flex justify-between gap-4">
-                <p className="font-poppins text-sm lg:text-base font-medium">Subtotal</p>
-                <p className="font-poppins text-sm lg:text-base font-normal text-[#9F9F9F]">
-                  Rs. 250,000.00
-                </p>
-              </span>
-
-              <span className="flex justify-between gap-4">
-                <p className="font-poppins text-sm lg:text-base font-medium">Total</p>
-                <p className="text-[#B88E2F] text-lg lg:text-xl/[30px] font-medium font-poppins">
-                  Rs. 250,000.00
-                </p>
-              </span>
+            <div className="flex flex-col gap-6 mt-6">
+              <div className="flex justify-between text-base lg:text-lg font-medium">
+                <span>Subtotal</span>
+                <span className="text-gray-600">${totalPrice}</span>
+              </div>
+              <div className="flex justify-between text-lg lg:text-xl font-medium">
+                <span>Total</span>
+                <span className="text-[#B88E2F]">${totalPrice}</span>
+              </div>
             </div>
 
             <Link href={"/checkout"}>
               <button
                 type="button"
-                className="text-lg lg:text-xl/[30px] font-normal h-12 lg:h-[58px] border border-black w-[222px] rounded-xl"
+                className="mt-6 w-full bg-black text-white py-3 rounded-lg text-lg lg:text-xl font-medium hover:bg-gray-800 transition"
               >
                 Check Out
               </button>

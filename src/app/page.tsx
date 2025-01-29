@@ -1,7 +1,58 @@
+"use client";
 import Image from "next/image";
-import ProductCard from "../components/Product-Card";
+// import { ProductCardProps } from "../components/Product-Card";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { useEffect, useState } from "react";
+import { Product } from "../../types/product";
+import { EightProduct } from "../sanity/lib/quries";
+import { addToCart, likeProduct } from "../../redux/cartSlice";
+import { useAppDispatch } from "../../hooks/redux";
 export default function Home() {
+  const dispatch = useAppDispatch()
+  
+const [product, setProduct] = useState<Product[]>([]);
+const [loading, setLoading] = useState<boolean>(true);
+const [error, setError] = useState<string | null>(null);
+
+useEffect(() => {
+  async function productData() {
+    try {
+      const productFetchData: Product[] = await client.fetch(EightProduct);
+      setProduct(productFetchData);
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+      setError("Failed to fetch product data. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  }
+  productData();
+}, []);
+
+if (loading) {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="flex flex-col items-center">
+        <div className="w-12 h-12 border-4 border-gray-300 border-t-[#dbab39] rounded-full animate-spin"></div>
+        <p className="mt-4 font-poppins text-lg text-gray-600">Loading products...</p>
+      </div>
+    </div>
+  );
+}
+
+if (error) {
+  return (
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="flex flex-col items-center">
+        <p className="mt-4 font-poppins text-lg text-red-600">{error}</p>
+      </div>
+    </div>
+  );
+}
+
+
   return (
     <div>
       {/* Hero Section Start */}
@@ -88,84 +139,132 @@ export default function Home() {
       <div className="xl:w-[1236px] mx-auto px-4 py-6">
         <div>
           {/* Section Title */}
-          <h2 className="text-[32px] md:text-[40px] leading-[48px] font-poppins font-bold text-center text-[#3A3A3A] mb-8 md:mb-16">
+          <h2 className="text-[32px] md:text-[40px] leading-[48px] font-poppins font-[750] text-center text-[#3A3A3A] mb-8 md:mb-16">
             Our Products
           </h2>
 
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7">
-            <ProductCard
-              image="/image-1.png"
-              name="Syltherine"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              originalPrice="Rp 3.500.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-30%"
-            />
+          {/* display product section start */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-7 w-full">
+            {product.map((element: Product) => (
+              <Link href={`/shop/${element._id}} key={element._id`} key={element._id}>
+                <div className="relative w-[250px] xs:w-[280px] mx-auto group">
+                  <div className="flex flex-col relative transition-opacity duration-300">
+                    {/* Image Section */}
+                    <div className="relative w-full h-[300px] sm:h-[301px]">
+                      {element.productImage && (
+                        <Image
+                          src={urlFor(element.productImage).url()}
+                          alt="Single Images"
+                          className="rounded-lg w-full md:h-[320px] h-[280px]"
+                          height={391}
+                          width={481}
+                        />
+                      )}
+                      {/* tag of the product like New  and sale prcentag*/}
 
-            <ProductCard
-              image="/images-2.png"
-              name="Leviosa"
-              description="Stylish cafe chair"
-              discountedPrice="Rp 2.500.000"
-              showOverlay={true}
-            />
+                      <div
+                        className={`h-10 w-10 sm:h-12 sm:w-12 rounded-full text-sm sm:text-base font-medium ${
+                          element.isNew ? `bg-[#5ea054] text-white `: "hidden"
+                        } absolute top-3 right-3 flex justify-center items-center`}
+                      >
+                        New
+                      </div>
+                    </div>
 
-            <ProductCard
-              image="/images-3.png"
-              name="Lolito"
-              description="Luxury big sofa"
-              discountedPrice="Rp 7.000.000"
-              originalPrice="Rp 14.000.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-50%"
-            />
+                    {/* Product Info Section */}
+                    <div className="bg-[#F4F5F7] p-4 sm:p-6 flex-grow">
+                      <h4 className="font-semibold text-lg sm:text-2xl font-poppins">
+                        {element.title}
+                      </h4>
+                      {/* <p className="text-sm sm:text-base font-medium text-[#898989] mt-1">
+                        {element.description}
+                      </p> */}
+                      <div className="flex items-center justify-between mt-2 sm:mt-3">
+                        <p className="font-poppins font-semibold text-base sm:text-xl">
+                          ${element.price}
+                        </p>
+                        {/* {element.price && (
+                          <p className="font-poppins font-normal text-sm sm:text-base line-through text-[#B0B0B0]">
+                            ${element.price}
+                          </p>
+                        )} */}
+                      </div>
+                    </div>
+                  </div>
 
-            <ProductCard
-              image="/image-4.png"
-              name="Respira"
-              description="Outdoor bar table and stool"
-              discountedPrice="Rp 500.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+                  {/* Overlay Section */}
+                  <div
+                    className={`absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center gap-4 p-4 sm:p-6 transition-opacity duration-300 ${
+                      element.showOverlay || "opacity-0 group-hover:opacity-100"
+                    }`}
+                  >
+                    <Link href={""}>
+                      <button
+                        onClick={() => {
+                          dispatch(addToCart(element));
+                        }}
+                        type="button"
+                        className="text-[#D89E00] w-[150px] xs:w-[200px] lg:w-[202px] h-12 bg-white font-semibold text-sm sm:text-base rounded-lg"
+                      >
+                        Add to cart
+                      </button>
+                    </Link>
 
-            <ProductCard
-              image="/images-5.png"
-              name="Grifo"
-              description="Night lamp"
-              discountedPrice="Rp 1.500.000"
-            />
+                    {/* Overlay Actions */}
+                    <div className="flex justify-between w-full sm:w-[80%] lg:w-[202px]">
+                      {/* Share */}
+                      <Link href={"/share"}>
+                        <div className="flex items-center gap-1 text-white cursor-pointer">
+                          <Image
+                            src={"/share.png"}
+                            alt="Share Icon"
+                            height={16}
+                            width={16}
+                          />
+                          <p className="text-xs sm:text-sm font-medium font-poppins">
+                            Share
+                          </p>
+                        </div>
+                      </Link>
 
-            <ProductCard
-              image="/image-6.png"
-              name="Muggo"
-              description="Small mug"
-              discountedPrice="Rp 150.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+                      {/* Compare */}
+                      <Link href={"/product-comparison"}>
+                        <div className="flex items-center gap-1 text-white cursor-pointer">
+                          <Image
+                            src={"/compare.png"}
+                            alt="Compare Icon"
+                            height={16}
+                            width={16}
+                          />
+                          <p className="text-xs sm:text-sm font-medium font-poppins">
+                            Compare
+                          </p>
+                        </div>
+                      </Link>
 
-            <ProductCard
-              image="/image-7.png"
-              name="Pingky"
-              description="Cute bed set"
-              discountedPrice="Rp 7.000.000"
-              originalPrice="Rp 14.000.000"
-              discountBgColor="bg-[#E97171]"
-              discount="-50%"
-            />
-
-            <ProductCard
-              image="/image-8.png"
-              name="Potty"
-              description="Minimalist flower pot"
-              discountedPrice="Rp 500.000"
-              discountBgColor="bg-[#2EC1AC]"
-              discount="New"
-            />
+                      {/* Like */}
+                      <Link href={""}  onClick={() => {
+                          dispatch(likeProduct(element));
+                        }}>
+                          <div className="flex items-center gap-1 text-white cursor-pointer">
+                            <Image
+                              src={"/heart-white.png"}
+                              alt="Like Icon"
+                              height={16}
+                              width={16}
+                            />
+                            <p className="text-xs sm:text-sm font-medium font-poppins">
+                              Like
+                            </p>
+                          </div>
+                        </Link>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
+          {/* display product section end */}
 
           {/* button start */}
           <div className="flex justify-center my-8">

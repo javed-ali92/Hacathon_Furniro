@@ -1,12 +1,22 @@
+"use client"
 import Banner from "@/components/Banner";
 import CustomerCare from "@/components/Customer-Care";
+import { getCart } from "../../../redux/cartSlice";
+import { useAppSelector } from "../../../hooks/redux";
+import { Product } from "../../../types/product";
 
 export default function Checkout() {
+   const cart = useAppSelector(getCart);
+    let totalPrice = 0;
+    cart.forEach((item:Product) => {
+      totalPrice += item.price * item.quantity;
+    })
+    
   return (
     <div>
       <Banner name="Checkout" title="Checkout" logo="/logo.png" />
 
-      <div className="max-w-[1242px] mx-auto my-10 flex flex-col  lg:flex-row">
+      <div className="max-w-[1242px] mx-auto my-10 flex flex-col-reverse  lg:flex-row">
         {/* form section start */}
         <div className="md:w-[608px] w-auto">
           <div className="flex flex-col gap-8 py-10 px-10">
@@ -207,31 +217,35 @@ export default function Checkout() {
               <h4 className="font-poppins font-medium text-2xl/9">Product</h4>
               <h4 className="font-poppins font-medium text-2xl/9">Subtotal</h4>
             </span>
-
-            <span className="flex justify-between items-center">
-              <span className="flex gap-2 items-center">
-                <p className="font-poppins font-normal text-base text-[#9F9F9F]">
-                  Asgaard sofa
-                </p>
-                <p className="font-medium font-poppins text-xs/[18px]">X</p>
-                <p className="font-medium font-poppins text-xs/[18px]">1</p>
-              </span>
-              <p className=" font-poppins font-light text-base">
-                Rs. 250,000.00
-              </p>
-            </span>
+            
+            <div>
+              {cart.map((val:Product)=>
+                <span className="flex justify-between items-center" key={val._id}>
+                  <span className="flex gap-2 items-center">
+                    <p className="font-poppins font-normal text-base text-[#9F9F9F]">
+                      {val.title}
+                    </p>
+                    <p className="font-medium font-poppins text-xs/[18px]">X</p>
+                    <p className="font-medium font-poppins text-xs/[18px]">{val.quantity}</p>
+                  </span>
+                  <p className=" font-poppins font-light text-base">
+                    {val.price * val.quantity}
+                  </p>
+                </span>
+              )}
+            </div>
 
             <span className="flex justify-between items-center">
               <p className="font-poppins font-normal text-base">Subtotal</p>
               <p className="font-poppins font-normal text-base">
-                Rs. 250,000.00
+                {totalPrice}
               </p>
             </span>
 
             <span className="flex justify-between items-center">
               <p className="font-poppins font-normal text-base">Total</p>
               <p className="font-poppins font-bold text-2xl/9 text-[#B88E2F]">
-                Rs. 250,000.00
+                {totalPrice}
               </p>
             </span>
           </div>
