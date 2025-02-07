@@ -30,7 +30,7 @@ const SearchResult = () => {
         setLoading(false);
         return;
       }
-
+  
       try {
         setLoading(true);
         // Decode the query string to handle spaces and special characters
@@ -51,7 +51,7 @@ const SearchResult = () => {
           }`,
           { decodedQuery }
         );
-
+  
         if (productFetchData.length > 0) {
           setProducts(productFetchData);
           setError(null); // Clear any previous errors
@@ -59,14 +59,21 @@ const SearchResult = () => {
           setProducts([]);
           setError(`No products found for "${decodedQuery}".`);
         }
-      } catch  {
+      } catch (error) {
         setError("Failed to load products. Please try again later.");
+        console.error("Error fetching products:", error);
       } finally {
         setLoading(false);
       }
     };
-
-    fetchProductData();
+  
+    // Only fetch data if the query is valid
+    if (rawQuery && typeof rawQuery === "string") {
+      fetchProductData();
+    } else {
+      setError("Invalid query parameter.");
+      setLoading(false);
+    }
   }, [rawQuery]);
   
   // Handle error state

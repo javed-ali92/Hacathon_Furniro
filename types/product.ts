@@ -10,4 +10,5 @@ export interface Product {
     quantity:number,
     isNew:boolean,
     showOverlay:boolean,
+    tags:string[],
 }
